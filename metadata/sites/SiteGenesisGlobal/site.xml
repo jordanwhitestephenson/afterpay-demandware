@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site xmlns="http://www.demandware.com/xml/impex/site/2007-04-30" site-id="SiteGenesisGlobal">
+    <name>SiteGenesisGlobal</name>
+    <currency>GBP</currency>
+    <taxation>gross</taxation>
+    <custom-cartridges>int_afterpay:app_storefront_controllers:app_storefront_pipelines:app_storefront_core:bc_integrationframework</custom-cartridges>
+    <storefront-status>online</storefront-status>
+</site>
+

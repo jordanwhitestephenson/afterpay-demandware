@@ -1,0 +1,119 @@
+/*!
+ * Import dependencies and customisations
+ */
+@import "variables";
+
+// lib
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/lib/normalize";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/lib/flag-icon-css/flag-icon";
+
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/base_elements";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/page_layouts";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/jqueryui";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/form_components";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/product_lists";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/base_tooltip";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/slots";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/header/header";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/minicart";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/breadcrumbs";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/primary_region_elements";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/secondary_region_elements";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/footer";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/color_swatches";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/product_tiles";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/search_results_grid_layout";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/infinite_scroll";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/compare";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/product_detail_page";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/bonus_products";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/size_charts";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/cart";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/checkout";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/orders";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/multishipping";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/account";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/wishlist";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/gift_registry";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/gift_certificates";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/login_pages";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/category_landing_page";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/store_locator";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/js";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/search_suggestion";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/quick_view";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/homepage";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/multi_inventory";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/responsive";
+@import "sitegenesis/app_storefront_core/cartridge/scss/default/print";
+
+@import "default/page_layouts";
+@import "default/checkout";
+@import "default/product_lists";
+@import "default/product_detail_page";
+@import "mixins/clearfix";
+@import "mixins/grid-framework";
+@import "mixins/grid";
+@import "grid";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background-color: $white;
+}
+
+#wrapper {
+    @extend .container;
+}
+
+#main {
+    @include make-row();
+}
+
+.primary-content {
+    @include make-md-column(9);
+    @include make-md-column-push(3);
+    @media screen and (min-width: 768px) {
+        border: 0;
+    }
+}
+
+#secondary {
+    @include make-md-column(3);
+    @include make-md-column-pull(9);
+
+    @media screen and (min-width: 768px) {
+        border: 0;
+        background: none;
+    }
+}
+
+#search-result-items {
+    @include make-row();
+}
+.search-result-items .grid-tile {
+    margin: 0 0 15px 0;
+    padding: 0;
+    box-shadow: none;
+    @include make-md-column(4);
+}
+.product-tile {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0 0 9px #ccc;
+}
+
+footer,
+.copyright,
+.postscript,
+.header-banner .header-promotion {
+    background-color: $brand-primary;
+}
+
+a,
+#secondary a,
+.menu-category a {
+    color: $text-color;
+}

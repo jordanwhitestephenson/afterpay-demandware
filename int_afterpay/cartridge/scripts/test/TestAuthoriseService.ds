@@ -1,0 +1,47 @@
+/**
+*   @input path : String
+*   @output HttpResult : Object
+*/
+
+importPackage( dw.catalog );
+importPackage( dw.system );
+importPackage( dw.util );
+
+
+function execute( args : PipelineDictionary ) : Number
+{
+    var logger : Logger = Logger.getLogger("RequestTrace");
+    var keyValuePairs = args.path.split("&");
+    var queryParameters = new HashMap();
+    
+    for each (var keyValueString in keyValuePairs) {
+        var keyValuePair = keyValueString.split("=");
+        
+        if (keyValuePair.length == 2) {
+            queryParameters.put(keyValuePair[0], keyValuePair[1]);
+        }
+    }
+
+    var AuthoriseService = require("~/cartridge/scripts/logic/services/AfterpayAuthorisePaymentService.ds");
+    
+    var token = queryParameters.get("token");
+    
+    AuthoriseService.generateRequest(token);
+    
+    var result = null;
+		
+	try {		
+		result = AuthoriseService.getResponse();		
+	} catch(ex) {
+		var exception = ex;
+		args.HttpResult = exception.message;
+	}
+	
+	if(result == null) {
+		return PIPELET_ERROR;
+	}
+	
+	args.HttpResult = JSON.stringify(result);
+	
+	return PIPELET_NEXT;
+}

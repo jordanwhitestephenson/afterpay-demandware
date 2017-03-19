@@ -1,0 +1,52 @@
+/**
+ *
+ * @input Basket : dw.order.Basket The basket to create shipments for
+ * @output AfterpayToken : Object
+ */
+importPackage( dw.order );
+importPackage( dw.system );
+importPackage( dw.util );
+importPackage( dw.web );
+
+var orderCreateService = require("~/cartridge/scripts/order/OrderService");
+var TokenModel = require("~/cartridge/scripts/models/AfterpayTokenModel.js");
+
+function execute( pdict : PipelineDictionary ) : Number
+{
+	var basket = pdict.Basket;
+	var logger = Logger.getLogger("RequestTrace");
+	var url = URLUtils.httpsContinue().toString();
+
+	if (empty(basket)) {
+		logger.error("Not basket for getting token");
+		return PIPELET_ERROR;
+	}
+
+	try {
+
+		orderCreateService.generateRequest(basket, url);
+
+		var response = orderCreateService.getResponse();
+		var res = new TokenModel();
+
+		if (!empty(response.token)) {
+
+			logger.debug("Afterpay Token: " + response.token);
+			res.apToken = response.token;
+
+			pdict.AfterpayToken = res;
+
+		} else {
+			looger.error("Can not get token. The response: " + response);
+			return PIPELET_ERROR;
+		}
+
+	} catch (exception) {
+		var e = exception;
+		logger.error(e);
+		return PIPELET_ERROR;
+	}
+
+	return PIPELET_NEXT;
+
+}

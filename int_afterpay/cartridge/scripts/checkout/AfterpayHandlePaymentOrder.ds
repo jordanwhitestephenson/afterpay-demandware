@@ -1,0 +1,68 @@
+/**
+*   @input PaymentStatus : String
+*   @input Order : dw.order.Order
+*   @output FinalPaymentStatus : String   
+*
+*/
+importPackage( dw.system );
+
+var PAYMENT_STATUS = require("~/cartridge/scripts/util/AfterpayConstants.js").PAYMENT_STATUS;
+var hanldeUpdateOrder = require("~/cartridge/scripts/checkout/AfterpayUpdateOrder.ds").HanldeUpdateOrder;
+var BaseUpdateOrderService = require("~/cartridge/scripts/logic/services/AfterpayUpdateOrderService.ds");
+var sitePreferencesUtilities = require("~/cartridge/scripts/util/AfterpayUtilities.js").getSitePreferencesUtilities();
+
+function execute( args : PipelineDictionary ) : Number
+{
+	var order = args.Order;
+	var paymentStatus = parsePaymentStatus(args.PaymentStatus);
+	var UpdateOrderService = undefined;
+	var orderStatus = undefined;
+	
+	try {
+		UpdateOrderService = getUpdateOrderService(paymentStatus);
+		UpdateOrderService.handleOrder(order, paymentStatus);
+		orderStatus = UpdateOrderService.orderStatus;
+	} catch (exception){
+		var e = exception;
+		Logger.error("After Handle Payment " + e);
+		return PIPELET_ERROR;
+	}
+	
+	args.FinalPaymentStatus = orderStatus;
+    return PIPELET_NEXT;
+}
+
+
+var parsePaymentStatus = function (paymentStatus : String) {
+	 return (paymentStatus == PAYMENT_STATUS.SUCCESS) ? PAYMENT_STATUS.APPROVED : paymentStatus;
+}
+
+var getUpdateOrderService = function () {
+	
+	var UpdateOrderService  = BaseUpdateOrderService.extend({
+		
+		orderStatus : undefined,
+		
+		init : function () {
+			this._super();
+		},
+		
+		updateDeclinedOrder : function () {
+			this.orderStatus = PAYMENT_STATUS.DECLINED;
+		},
+		
+		updateFailedOrder : function () {
+			this.orderStatus = PAYMENT_STATUS.FAILED;
+		},
+		
+		/**
+		 * Update order after calling direct capture/ authorise mode. The order will be not update if the response returns declined status
+		 */
+		updateStatusOrder : function (order, paymentStatus) {
+			this.orderStatus = paymentStatus.status;
+			hanldeUpdateOrder (order, paymentStatus, sitePreferencesUtilities.getPaymentMode().value);			
+		}
+	});
+	
+	return new UpdateOrderService();
+}

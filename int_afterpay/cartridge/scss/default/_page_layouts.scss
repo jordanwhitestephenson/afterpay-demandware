@@ -1,0 +1,9 @@
+#wrapper {
+    &.pt_cart {
+        .primary-content {
+            @media (min-width: 992px) {
+                left: 0;
+            }
+        }
+    }
+}

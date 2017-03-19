@@ -1,0 +1,34 @@
+{
+    "name": "afterpay-demandware",
+    "version": "1.0.0",
+    "description": "A payment gateway that provides credit card processing capabilities and additional payment methods such as installment plans",
+    "main": "gulpfile.js",
+    "devDependencies": {
+        "demandware-npm": "git+ssh://git@bitbucket.org/amblique/demandware-npm#develop",
+        "gulp": "^3.9.0"
+    },
+    "dependencies": {
+        "sitegenesis": "git+ssh://git@bitbucket.org/amblique/sitegenesis#v103.1.0.1",
+        "integrationframework": "git+ssh://git@bitbucket.org/amblique/integrationframework.git#1.5.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@bitbucket.org:amblique/afterpay-demandware.git"
+    },
+    "author": "Amblique",
+    "paths": {
+        "css": [{
+            "src": "int_afterpay/cartridge/scss/",
+            "dest": "int_afterpay/cartridge/static/default/css/"
+        }],
+        "js": [{
+            "src": "int_afterpay/cartridge/js/",
+            "dest": "int_afterpay/cartridge/static/default/js/",
+            "file": "app.js"
+        }],
+        "fonts": [{
+            "src": "int_afterpay/cartridge/fonts/",
+            "dest": "int_afterpay/cartridge/static/default/fonts/"
+        }]
+    }
+}

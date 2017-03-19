@@ -1,0 +1,42 @@
+importPackage(dw.io);
+importPackage(dw.net);
+importPackage(dw.object);
+importPackage(dw.svc);
+importPackage(dw.system);
+importPackage(dw.util);
+importPackage(dw.web);
+
+var AfterpayApiContext = require("~/cartridge/scripts/context/AfterpayApiContext");
+var AfterpayHttpService = require("~/cartridge/scripts/logic/services/AfterpayHttpService.ds");
+var Class 		= require('app_storefront_controllers/cartridge/scripts/util/Class').Class;
+
+var DirectCapturePaymentService = Class.extend({
+
+	 _requestUrl : null,
+	 _requestBody : {},
+
+	init : function() {
+        this.afterpayHttpService = new AfterpayHttpService();
+        this.afterpayApiContext = new AfterpayApiContext();
+    },
+
+    generateRequest : function(token : String, orderNo : String) {
+        this._requestUrl = this.afterpayApiContext.getFlowApiUrls().get("directCapturePayment");
+        this._generateRequestBody(token, orderNo);
+    },
+
+    getResponse : function () {
+        var response = this.afterpayHttpService.call(this._requestUrl, "DIRECT_CAPTURE_PAYMENT", this._requestBody);
+        return response;
+    },
+
+    _generateRequestBody : function (token, orderNo) {
+    	this._requestBody = {
+    		"token" : token,
+    		"merchantReference" : orderNo
+    	};
+    }
+});
+
+
+module.exports = new DirectCapturePaymentService();

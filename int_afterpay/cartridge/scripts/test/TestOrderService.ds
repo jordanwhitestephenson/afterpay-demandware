@@ -1,0 +1,36 @@
+/**
+*	@input Basket : dw.order.LineItemCtnr
+*   @output HttpResult : Object
+*/
+
+importPackage( dw.catalog );
+importPackage( dw.system );
+
+
+function execute( args : PipelineDictionary ) : Number
+{
+    var logger : Logger = Logger.getLogger("RequestTrace");
+    var basket = args.Basket;
+
+
+        var OrderService = require("~/cartridge/scripts/order/OrderService");
+
+        OrderService.generateRequest(basket);
+
+		var result = null;
+
+		try {
+			var result = OrderService.getResponse();
+		} catch(ex) {
+			var exception = ex;
+			args.HttpResult = exception.message;
+		}
+
+		if(result == null) {
+			return PIPELET_ERROR;
+		}
+
+		args.HttpResult = JSON.stringify(result);
+
+		return PIPELET_NEXT;
+}

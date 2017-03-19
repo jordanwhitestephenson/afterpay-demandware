@@ -1,0 +1,36 @@
+.payment-method-options {
+    .form-row {
+        width: 25%;
+
+        span {
+            background-repeat: no-repeat;
+            display: block;
+            height: 15px;
+            margin-left: 19px;
+            width: 70px;
+        }
+    }
+}
+
+.afterpay-checkout-pbi {
+    margin-bottom: 40px;
+
+    ul {
+        list-style-type: none;
+        margin:  20px 0;
+        padding-left: 0;
+
+    }
+
+    li {
+        margin-top: 15px;
+
+        &:last-child {
+            padding-left: 20px;
+        }
+
+        img {
+            padding-right: 6px;
+        }
+    }
+}

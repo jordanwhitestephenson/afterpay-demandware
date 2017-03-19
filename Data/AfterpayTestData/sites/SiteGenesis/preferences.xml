@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences xmlns="http://www.demandware.com/xml/impex/preferences/2007-03-31">
+    <standard-preferences>
+        <all-instances>
+            <preference preference-id="AddProductToBasketBehavior">IncrementQuantities</preference>
+            <preference preference-id="CategoryChangeFrequency">daily</preference>
+            <preference preference-id="CategoryPriority">0.5</preference>
+            <preference preference-id="ContentChangeFrequency">daily</preference>
+            <preference preference-id="ContentPriority">0.5</preference>
+            <preference preference-id="CouponGeneratorIncludeDashes">true</preference>
+            <preference preference-id="CouponGeneratorIncludeVowels">true</preference>
+            <preference preference-id="EnableSiteOrderNumbers">false</preference>
+            <preference preference-id="MaxURLsPerFile">5000</preference>
+            <preference preference-id="OrderEditExportDelay">30</preference>
+            <preference preference-id="OrderExportDelay">30</preference>
+            <preference preference-id="OrderIPLoggingEnabled">true</preference>
+            <preference preference-id="OrderLifetime">0</preference>
+            <preference preference-id="PaymentAccountNumberLifetime">0</preference>
+            <preference preference-id="ProductChangeFrequency">daily</preference>
+            <preference preference-id="ProductPriority">0.5</preference>
+            <preference preference-id="RedirectUrlCopySourceParameters">false</preference>
+            <preference preference-id="SiteCatalog">storefront-catalog-en</preference>
+            <preference preference-id="SiteCurrencies">USD:AUD</preference>
+            <preference preference-id="SiteCustomerList">SiteGenesis</preference>
+            <preference preference-id="SiteDefaultLocale">en_AU</preference>
+            <preference preference-id="SiteInventoryList">inventory</preference>
+            <preference preference-id="SiteLibrary">SiteGenesisSharedLibrary</preference>
+            <preference preference-id="SiteLocales">en_AU</preference>
+            <preference preference-id="SitePriceBooks">aud-list-prices:aud-sale-prices:cny-list-prices:cny-sale-prices:eur-list-prices:eur-sale-prices:jpy-list-prices:jpy-sale-prices:usd-list-prices:usd-sale-prices</preference>
+            <preference preference-id="SiteTimezone">Etc/UTC</preference>
+            <preference preference-id="StorefrontURLsEnabled">true</preference>
+        </all-instances>
+        <development>
+            <preference preference-id="AvailabilityFiltering">Disabled</preference>
+            <preference preference-id="AvailabilityLowRankingThreshold">0.0</preference>
+            <preference preference-id="RobotsTxtContent"/>
+            <preference preference-id="RobotsTxtMode">Cartridge</preference>
+            <preference preference-id="SearchSuggestions">Disabled</preference>
+        </development>
+        <staging>
+            <preference preference-id="AvailabilityFiltering">Disabled</preference>
+            <preference preference-id="AvailabilityLowRankingThreshold">0.0</preference>
+            <preference preference-id="RobotsTxtContent"/>
+            <preference preference-id="RobotsTxtMode">Cartridge</preference>
+            <preference preference-id="SearchSuggestions">Enabled</preference>
+        </staging>
+        <production>
+            <preference preference-id="AvailabilityFiltering">Disabled</preference>
+            <preference preference-id="AvailabilityLowRankingThreshold">0.0</preference>
+            <preference preference-id="RobotsTxtContent"/>
+            <preference preference-id="RobotsTxtMode">Cartridge</preference>
+            <preference preference-id="SearchSuggestions">Disabled</preference>
+        </production>
+    </standard-preferences>
+    <custom-preferences>
+        <all-instances/>
+        <development>
+            <preference preference-id="apDisplayPdpInfo">true</preference>
+            <preference preference-id="apDisplayPlpInfo">false</preference>
+            <preference preference-id="apJavascriptURL">https://www-sandbox.secure-afterpay.com.au/afterpay.js</preference>
+            <preference preference-id="apLearnMoreUrl">https://www.afterpay.com.au/terms/</preference>
+            <preference preference-id="apPaymentMode">DIRECT_CAPTURE</preference>
+            <preference preference-id="apRedirectCancelUrl">AFTERPAY-Cancel</preference>
+            <preference preference-id="apRedirectConfirmUrl">AFTERPAY-Confirm</preference>
+            <preference preference-id="apServiceName">afterpay.http.defaultendpoint</preference>
+        </development>
+        <staging/>
+        <production/>
+    </custom-preferences>
+</preferences>
+

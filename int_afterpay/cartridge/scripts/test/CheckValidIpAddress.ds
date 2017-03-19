@@ -1,0 +1,31 @@
+/**
+* @input IpAddress : String
+*
+*/
+importPackage( dw.system );
+importPackage( dw.util );
+
+var FlowRepository = require("~/cartridge/scripts/logic/repositories/FlowRepository.ds");
+
+function execute( pdict : PipelineDictionary ) : Number
+{
+	var logger : Logger = Logger.getLogger("FlowCheckValidIPAddresses");
+	try {
+		logger.debug("Start check for white listed ip address");
+		
+		var flowRepository = new FlowRepository();
+		
+		var ipAddress = pdict.IpAddress;
+		var whiteListedIPAddresses = flowRepository.getWhiteListedAddresses();
+
+		var isIPWhiteListed = whiteListedIPAddresses.indexOf(ipAddress) != -1; 
+	    
+	    return isIPWhiteListed ? PIPELET_NEXT : PIPELET_ERROR;
+	}
+	catch (ex) {
+		var exception = ex;
+		logger.error(exception);
+		
+		return PIPELET_ERROR;
+	}
+}

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="Order">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="apIsAfterpayOrder">
+                <display-name xml:lang="x-default">Afterpay Payment Method</display-name>
+                <description xml:lang="x-default">Determines if this is an Afterpay order</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Afterpay">
+                <display-name xml:lang="x-default">Afterpay</display-name>
+                <attribute attribute-id="apIsAfterpayOrder"/>
+            </attribute-group>
+        </group-definitions>		
+    </type-extension>
+
+    <type-extension type-id="PaymentTransaction">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="apAuthoriseStatus">
+                <display-name xml:lang="x-default">Afterpay Authorise Status</display-name>
+                <description xml:lang="x-default">Afterpay Authorise Status</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="apDirectPaymentStatus">
+                <display-name xml:lang="x-default">Afterpay Direct Payment Status</display-name>
+                <description xml:lang="x-default">Afterpay Direct Payment Status</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="apInitialStatus">
+                <display-name xml:lang="x-default">Afterpay Initial Status</display-name>
+                <description xml:lang="x-default">Afterpay Initial Status</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="apPaymentID">
+                <display-name xml:lang="x-default">Afterpay Order ID</display-name>
+                <description xml:lang="x-default">Afterpay Order ID</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="apPaymentMode">
+                <display-name xml:lang="x-default">Afterpay Payment Mode</display-name>
+                <description xml:lang="x-default">Afterpay Payment Mode</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="apToken">
+                <display-name xml:lang="x-default">Afterpay Token</display-name>
+                <description xml:lang="x-default">Afterpay Token</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Afterpay">
+                <display-name xml:lang="x-default">Afterpay</display-name>
+                <attribute attribute-id="apPaymentID"/>
+                <attribute attribute-id="apToken"/>
+                <attribute attribute-id="apAuthoriseStatus"/>
+                <attribute attribute-id="apPaymentMode"/>
+                <attribute attribute-id="apDirectPaymentStatus"/>
+                <attribute attribute-id="apInitialStatus"/>
+            </attribute-group>			
+        </group-definitions>
+    </type-extension>
+
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="apDisplayPdpInfo">
+                <display-name xml:lang="x-default">Afterpay Display Product Details Page Information</display-name>
+                <description xml:lang="x-default">Determines if the Afterpay product information is display on the product details page</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="apDisplayPlpInfo">
+                <display-name xml:lang="x-default">Afterpay Display Product List Page Information</display-name>
+                <description xml:lang="x-default">Determines if the Afterpay product information is display on the product tile</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>false</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="apLearnMoreUrl">
+                <display-name xml:lang="x-default">Afterpay Learn More URL</display-name>
+                <description xml:lang="x-default">The URL that links to Afterpay for more information</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+                <default-value>https://www.afterpay.com.au/terms/</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="apJavascriptURL">
+                <display-name xml:lang="x-default">Afterpay Javascript URL</display-name>
+                <description xml:lang="x-default">Afterpay javascript will load the modal for the user to make their payment with.</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+                <default-value>www.secure-afterpay.com.au/afterpay.js</default-value>
+            </attribute-definition>			
+            <attribute-definition attribute-id="apPaymentMode">
+                <display-name xml:lang="x-default">Afterpay Payment Mode</display-name>
+                <type>enum-of-string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <value-definitions>
+                    <value-definition>
+                        <display xml:lang="x-default">AUTHORISE</display>
+                        <value>AUTHORISE</value>
+                    </value-definition>
+                    <value-definition>
+                        <display xml:lang="x-default">DIRECT CAPTURE</display>
+                        <value>DIRECT_CAPTURE</value>
+                    </value-definition>
+                </value-definitions>
+            </attribute-definition>
+            <attribute-definition attribute-id="apRedirectCancelUrl">
+                <display-name xml:lang="x-default">Redirect Cancel Url</display-name>
+                <description xml:lang="x-default">This is the pipeline that handles the cancel call from Afterpay</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="apRedirectConfirmUrl">
+                <display-name xml:lang="x-default">Redirect Confirm Url</display-name>
+                <description xml:lang="x-default">This is the pipeline that handles the confirm call from Afterpay</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+                <default-value>Afterpay-Confirm</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="apServiceName">
+                <display-name xml:lang="x-default">Afterpay Service Name</display-name>
+                <description xml:lang="x-default">The service name used for the current site</description>
+                <type>string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+                <default-value>afterpay.http.defaultendpoint</default-value>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Integration_Afterpay">
+                <display-name xml:lang="x-default">Integration Afterpay</display-name>
+                <attribute attribute-id="apRedirectConfirmUrl"/>
+                <attribute attribute-id="apRedirectCancelUrl"/>
+                <attribute attribute-id="apDisplayPdpInfo"/>
+                <attribute attribute-id="apDisplayPlpInfo"/>
+                <attribute attribute-id="apPaymentMode"/>
+                <attribute attribute-id="apLearnMoreUrl"/>
+				<attribute attribute-id="apJavascriptURL"/>
+                <attribute attribute-id="apServiceName"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+</metadata>
